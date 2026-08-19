@@ -26,7 +26,7 @@
     <string name="liters_placeholder">Liters</string>
     <string name="days_enough_placeholder">Enough for about</string>
     <string name="date_format">Date: %1$s</string>
-    <string name="liters_format">Liters: %1$.1f л</string>
+    <string name="liters_format">Liters: %1$.1f l</string>
     <string name="days_enough_format">Enough for about %1$d days</string>
     <string name="add_client_title">Adding a client</string>
     <string name="full_name_hint">Full name of the client</string>

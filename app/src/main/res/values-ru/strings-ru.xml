@@ -27,7 +27,7 @@
     <string name="liters_placeholder">Литры</string>
     <string name="days_enough_placeholder">Хватит примерно на</string>
     <string name="date_format">Дата: %1$s</string>
-    <string name="liters_format">Литры: %1$.1f л</string>
+    <string name="liters_format">Дата: %1$s</string>
     <string name="days_enough_format">Хватит примерно на %1$d дней</string>
     <string name="add_client_title">Добавление клиента</string>
     <string name="full_name_hint">ФИО клиента</string>
