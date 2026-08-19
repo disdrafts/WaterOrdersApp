@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WaterOrdersApp</string>
+    <string name="home_title">Учёт воды</string>
+    <string name="loading">Загрузка</string>
+    <string name="data_load_error">Не удалось загрузить данные</string>
+    <string name="clients">Клиенты</string>
+    <string name="purchases">Покупки</string>
+    <string name="add_client">Добавить клиента</string>
+    <string name="new_purchase">Новая покупка</string>
+    <string name="paid">Оплачено</string>
+    <string name="not_paid">Не оплачено</string>
+    <string name="client_name_placeholder">Имя клиента</string>
+    <string name="month_january">Январь</string>
+    <string name="month_february">Февраль</string>
+    <string name="month_march">Март</string>
+    <string name="month_april">Апрель</string>
+    <string name="month_may">Май</string>
+    <string name="month_june">Июнь</string>
+    <string name="month_july">Июль</string>
+    <string name="month_august">Август</string>
+    <string name="month_september">Сентябрь</string>
+    <string name="month_october">Октябрь</string>
+    <string name="month_november">Ноябрь</string>
+    <string name="month_december">Декабрь</string>
+    <string name="date_placeholder">Дата</string>
+    <string name="liters_placeholder">Литры</string>
+    <string name="days_enough_placeholder">Хватит примерно на</string>
+    <string name="date_format">Дата: %1$s</string>
+    <string name="liters_format">Литры: %1$.1f л</string>
+    <string name="days_enough_format">Хватит примерно на %1$d дней</string>
+    <string name="add_client_title">Добавление клиента</string>
+    <string name="full_name_hint">ФИО клиента</string>
+    <string name="save_client">Сохранить клиента</string>
+    <string name="empty_full_name_error">Введите ФИО клиента</string>
+    <string name="add_purchase_title">Новая покупка</string>
+    <string name="client_hint">Клиент</string>
+    <string name="month_hint">Месяц</string>
+    <string name="date_hint">Дата</string>
+    <string name="liters_hint">Объём воды, л</string>
+    <string name="payment_status_title">Статус оплаты</string>
+    <string name="save_purchase">Сохранить покупку</string>
+    <string name="select_client_error">Выберите клиента</string>
+    <string name="invalid_liters_error">Введите корректное количество воды</string>
+    <string name="enter_date_error">Введите дату</string>
+    <string name="select_date">Выберите дату</string>
+</resources>

@@ -12,4 +12,16 @@
         android:label="Главная"
         tools:layout="@layout/fragment_home" />
 
+    <fragment
+        android:id="@+id/addClientFragment"
+        android:name="com.example.waterordersapp.presentation.addClient.AddClientFragment"
+        android:label="@string/add_client_title"
+        tools:layout="@layout/fragment_add_client" />
+
+    <fragment
+        android:id="@+id/addPurchaseFragment"
+        android:name="com.example.waterordersapp.presentation.addPurchase.AddPurchaseFragment"
+        android:label="@string/add_purchase_title"
+        tools:layout="@layout/fragment_add_purchase" />
+
 </navigation>
