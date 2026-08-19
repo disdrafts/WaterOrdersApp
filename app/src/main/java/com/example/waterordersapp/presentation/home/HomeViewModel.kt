@@ -29,19 +29,21 @@ class HomeViewModel @Inject constructor(
     }
     private fun loadData() {
         viewModelScope.launch {
-            _uiState.value = _uiState.value.copy(isLoading = true)
+            _uiState.value = _uiState.value.copy(
+                isLoading = true
+            )
             try {
                 initializerDataUseCase()
                 combine(
                     getClientUseCase(),
                     getPurchasesUseCase()
                 ) { clients, purchases ->
-                    purchases.map { purchase ->
+                    val purchaseUiModels = purchases.map { purchase ->
                         val client = clients.firstOrNull {
                             it.id == purchase.clientId
                         }
                         PurchaseUiModel(
-                            clientName = client?.fullName ?: "",
+                            clientName = client?.fullName.orEmpty(),
                             month = purchase.month,
                             date = purchase.date,
                             liters = purchase.liters,
@@ -51,11 +53,13 @@ class HomeViewModel @Inject constructor(
                             paymentStatus = purchase.paymentStatus
                         )
                     }
-                }.collect { purchases ->
-                    _uiState.value = HomeUiState(
-                        purchases = purchases,
+                    HomeUiState(
+                        clients = clients,
+                        purchases = purchaseUiModels,
                         isLoading = false
                     )
+                }.collect { state ->
+                    _uiState.value = state
                 }
             } catch (e: Exception) {
                 _uiState.value = HomeUiState(
