@@ -46,7 +46,9 @@ class AddPurchaseViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(liters = liters)
     }
     fun setPaymentStatus(paymentStatus: PaymentStatus) {
-        _uiState.value = _uiState.value.copy(paymentStatus = paymentStatus)
+        _uiState.value = _uiState.value.copy(
+            paymentStatus = paymentStatus
+        )
     }
     fun savePurchase() {
         val state = _uiState.value

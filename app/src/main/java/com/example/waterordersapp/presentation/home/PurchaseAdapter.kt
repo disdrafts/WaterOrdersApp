@@ -43,7 +43,6 @@ class PurchaseAdapter : ListAdapter<PurchaseUiModel, PurchaseAdapter.PurchaseVie
                 when (purchase.paymentStatus) {
                     PaymentStatus.PAID ->
                         context.getString(R.string.paid)
-
                     PaymentStatus.UNPAID ->
                         context.getString(R.string.not_paid)
                 }
