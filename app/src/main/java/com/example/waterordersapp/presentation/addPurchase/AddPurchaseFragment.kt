@@ -1,6 +1,7 @@
 package com.example.waterordersapp.presentation.addPurchase
 
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
@@ -33,7 +34,6 @@ class AddPurchaseFragment : Fragment(R.layout.fragment_add_purchase) {
         setupListeners()
         observeState()
     }
-
     private fun observeState() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(
@@ -42,15 +42,39 @@ class AddPurchaseFragment : Fragment(R.layout.fragment_add_purchase) {
                 viewModel.uiState.collect { state ->
                     setupClientDropdown(state)
                     setupMonthDropdown()
+                    val errorMessage = getErrorMessage(state.error)
+                    binding.tilClient.error = null
+                    binding.tilMonth.error = null
+                    binding.tilDate.error = null
+                    binding.tilLiters.error = null
+                    when (state.error) {
+                        AddPurchaseError.CLIENT_NOT_SELECTED -> {
+                            binding.tilClient.error = errorMessage
+                        }
+                        AddPurchaseError.INVALID_LITERS -> {
+                            binding.tilLiters.error = errorMessage
+                        }
+                        AddPurchaseError.DATE_NOT_SELECTED -> {
+                            binding.tilDate.error = errorMessage
+                        }
+                        null -> Unit
+                    }
                     if (state.isSaved) {
                         findNavController().popBackStack()
                     }
-                    binding.tilClient.error = state.error
-                    binding.tilMonth.error = state.error
-                    binding.tilDate.error = state.error
-                    binding.tilLiters.error = state.error
                 }
             }
+        }
+    }
+    private fun getErrorMessage(error: AddPurchaseError?): String? {
+        return when (error) {
+            AddPurchaseError.CLIENT_NOT_SELECTED ->
+                getString(R.string.error_client_not_selected)
+            AddPurchaseError.INVALID_LITERS ->
+                getString(R.string.error_invalid_liters)
+            AddPurchaseError.DATE_NOT_SELECTED ->
+                getString(R.string.error_date_not_selected)
+            null -> null
         }
     }
     private fun setupClientDropdown(state: AddPurchaseUiState) {
@@ -65,7 +89,7 @@ class AddPurchaseFragment : Fragment(R.layout.fragment_add_purchase) {
     }
     private fun setupMonthDropdown() {
         val months = Month.entries.map { month ->
-            month.name
+            getMonthName(month)
         }
         binding.actvMonth.setAdapter(
             ArrayAdapter(
@@ -121,6 +145,22 @@ class AddPurchaseFragment : Fragment(R.layout.fragment_add_purchase) {
             parentFragmentManager,
             "DATE_PICKER"
         )
+    }
+    private fun getMonthName(month: Month): String {
+        return when(month) {
+            Month.JANUARY -> getString(R.string.month_january)
+            Month.FEBRUARY -> getString(R.string.month_february)
+            Month.MARCH -> getString(R.string.month_march)
+            Month.APRIL -> getString(R.string.month_april)
+            Month.MAY -> getString(R.string.month_may)
+            Month.JUNE -> getString(R.string.month_june)
+            Month.JULY -> getString(R.string.month_july)
+            Month.AUGUST -> getString(R.string.month_august)
+            Month.SEPTEMBER -> getString(R.string.month_september)
+            Month.OCTOBER -> getString(R.string.month_october)
+            Month.NOVEMBER -> getString(R.string.month_november)
+            Month.DECEMBER -> getString(R.string.month_december)
+        }
     }
     override fun onDestroyView() {
         super.onDestroyView()

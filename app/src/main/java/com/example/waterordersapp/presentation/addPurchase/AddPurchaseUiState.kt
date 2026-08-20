@@ -10,8 +10,8 @@ data class AddPurchaseUiState(
     val selectedMonth: Month = Month.JANUARY,
     val date: String = "",
     val liters: String = "",
-    val paymentStatus: PaymentStatus = PaymentStatus.PAID,
+    val paymentStatus: PaymentStatus = PaymentStatus.UNPAID,
     val isLoading: Boolean = false,
     val isSaved: Boolean = false,
-    val error: String? = null
+    val error: AddPurchaseError? = null
 )

@@ -25,7 +25,6 @@ class AddPurchaseViewModel @Inject constructor(
     init {
         loadClients()
     }
-
     private fun loadClients() {
         viewModelScope.launch {
             getClientUseCase().collect { clients ->
@@ -52,18 +51,17 @@ class AddPurchaseViewModel @Inject constructor(
     }
     fun savePurchase() {
         val state = _uiState.value
-        if(state.selectedClient == null) {
-            _uiState.value = state.copy(error = "Selected Client")
+        if (state.selectedClient == null) {
+            _uiState.value = state.copy(error = AddPurchaseError.CLIENT_NOT_SELECTED)
             return
         }
         val liters = state.liters.toDoubleOrNull()
-        if(liters == null || liters <= 0) {
-            _uiState.value = state.copy(error = "Enter the correct amount of water")
+        if (liters == null || liters <= 0) {
+            _uiState.value = state.copy(error = AddPurchaseError.INVALID_LITERS)
             return
         }
-
-        if(state.date.isBlank()) {
-            _uiState.value = state.copy(error = "Specify the date")
+        if (state.date.isBlank()) {
+            _uiState.value = state.copy(error = AddPurchaseError.DATE_NOT_SELECTED)
             return
         }
         viewModelScope.launch {
@@ -82,11 +80,8 @@ class AddPurchaseViewModel @Inject constructor(
                     error = null
                 )
             } catch (e: Exception) {
-                _uiState.value = _uiState.value.copy(
-                    error = e.message
-                )
+                _uiState.value = _uiState.value.copy(error = null)
             }
         }
-
     }
 }
